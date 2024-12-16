@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './index.css'; 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-
-
 const App = () => {
-
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
+  const [tasks, setTasks] = useState([]); 
+  const [newTask, setNewTask] = useState(''); 
 
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -15,8 +12,8 @@ const App = () => {
   }, []);
 
   const addTask = () => {
-    if (newTask.trim()) {
-      const updatedTasks = [...tasks, { text: newTask, completed: false }];
+    if (newTask.trim() && !tasks.some(task => task.text === newTask.trim())) {
+      const updatedTasks = [...tasks, { text: newTask.trim(), completed: false }];
       setTasks(updatedTasks);
       setNewTask('');
       localStorage.setItem('tasks', JSON.stringify(updatedTasks));
@@ -31,9 +28,14 @@ const App = () => {
   };
 
   const deleteTask = (index) => {
-    const updatedTasks = tasks.filter((task, i) => i !== index);
+    const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  };
+
+  const clearAllTasks = () => {
+    setTasks([]);
+    localStorage.removeItem('tasks');
   };
 
   return (
@@ -66,13 +68,22 @@ const App = () => {
                 onChange={() => toggleCompletion(index)}
               />
               <span>{task.text}</span>
-              <button className="delete" onClick={() => deleteTask(index)}> <DeleteOutlineIcon /></button>
+              <button className="delete" onClick={() => deleteTask(index)}>
+                <DeleteOutlineIcon />
+              </button>
             </li>
           ))}
         </ul>
+
+        <div className="clear-all-container">
+          <button onClick={clearAllTasks} className="button-clear-all">
+            Apagar Todas
+          </button>
+        </div>
       </div>
     </div>
   );
 };
+
 
 export default App;

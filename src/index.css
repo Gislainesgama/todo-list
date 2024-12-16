@@ -1,6 +1,54 @@
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ad1457;
+  border-radius: 5px;
+  background-color: #fbe9e7;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: white;
+  border-color: #880e4f;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✔';
+  color: #ad1457;
+  font-size: 25px;
+  position: absolute;
+  top: -9px;
+  left: 3px;
+}
+
+.clear-all-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-clear-all {
+  background-color: #ad1457;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button-clear-all:hover {
+  background-color: #880e4f;
+}
 
 body {
-  background-color: #fbe9e7; 
+  background-color: #fbe9e7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,17 +64,15 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Título */
 .text {
   font-size: 32px;
   font-weight: bold;
-  color: #880e4f; 
+  color: #880e4f;
   text-align: center;
 }
-
 
 .input-container {
   display: flex;
@@ -36,16 +82,15 @@ body {
 .pink-shape {
   flex: 1;
   padding: 10px;
-  border: 1px solid #d81b60; 
+  border: 1px solid #d81b60;
   border-radius: 5px;
   margin-right: 10px;
-  background-color: #f8bbd0; 
-  color: #880e4f; 
+  background-color: #f8bbd0;
+  color: #880e4f;
 }
 
-/* Botão */
 .button-primary {
-  background-color: #ad1457; 
+  background-color: #ad1457;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -54,17 +99,16 @@ body {
 }
 
 .button-primary:hover {
-  background-color: #880e4f; 
+  background-color: #880e4f;
 }
 
-/* Lista de Tarefas */
 .task-list {
   list-style: none;
   padding: 0;
 }
 
 .todo-item {
-  background-color: #f8bbd0; 
+  background-color: #f8bbd0;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -75,16 +119,16 @@ body {
 
 .todo-item.completed {
   text-decoration: line-through;
-  color: #880e4f; /* Rosa escuro para tarefas concluídas */
+  color: #880e4f;
 }
-.delete{
+
+.delete {
   cursor: pointer;
   width: 30px;
   height: 30px;
   background: none;
-  border: none
+  border: none;
 }
-
 
 @media (max-width: 385px) {
   body {
@@ -101,7 +145,7 @@ body {
   }
 
   .text {
-    font-size: 24px; 
+    font-size: 24px;
     margin-bottom: 10px;
   }
 
@@ -115,7 +159,7 @@ body {
   }
 
   .button-primary {
-    width: 100%; 
+    width: 100%;
   }
 
   .task-list {
@@ -124,15 +168,15 @@ body {
 
   .todo-item {
     display: flex;
-    align-items: center; 
-    justify-content: space-between; 
-    font-size: 14px; 
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
     padding: 8px;
-    gap: 10px; 
+    gap: 10px;
   }
 
   .todo-item > * {
-    flex-shrink: 0; 
+    flex-shrink: 0;
   }
 
   .todo-item.completed {
@@ -148,9 +192,9 @@ body {
   }
 
   .task-list .todo-item .task-text {
-    flex-grow: 1; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    white-space: nowrap; 
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
